@@ -65,7 +65,8 @@ namespace DNTCaptcha.Core.Providers
                 return null;
             }
 
-            Remove(context, token);
+            //Geter can't change anything
+            //Remove(context, token);
 
             var decryptedValue = _captchaProtectionProvider.Decrypt(cookieValue);
             return decryptedValue?.Replace(context.GetSalt(_captchaProtectionProvider), string.Empty);
@@ -95,9 +96,6 @@ namespace DNTCaptcha.Core.Providers
                 Path = context.Request.PathBase.HasValue ? context.Request.PathBase.ToString() : "/",
                 Secure = context.Request.IsHttps,
                 Expires = DateTimeOffset.UtcNow.AddMinutes(CookieLifeTimeInMinutes),
-#if NETSTANDARD2_0
-                IsEssential = true
-#endif
             };
         }
     }

@@ -166,6 +166,8 @@ namespace DNTCaptcha.Core.Providers
 
 		private string wordify(long number, Language language, string leftDigitsText, int thousands)
 		{
+            if (language == Language.Russian)
+                return number.ToString();
 			if (number == 0)
 			{
 				return leftDigitsText;

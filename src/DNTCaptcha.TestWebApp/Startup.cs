@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using DNTCaptcha.Core;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace DNTCaptcha.TestWebApp
 {
@@ -22,14 +24,14 @@ namespace DNTCaptcha.TestWebApp
                         .AllowCredentials());
             });
             services.AddMvc(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_0)
+                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             services.AddDirectoryBrowser();
 
             services.AddDNTCaptcha(options =>
                 // options.UseSessionStorageProvider()
                 options.UseMemoryCacheStorageProvider()
-                );
-
+                );            
             services.AddSession();
         }
 

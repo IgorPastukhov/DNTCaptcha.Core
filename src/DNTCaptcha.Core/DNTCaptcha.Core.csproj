@@ -1,19 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Description>DNTCaptcha.Core is a captcha generator and validator for ASP.NET Core applications.</Description>
+        <Description>DNTCaptchaRus.Core is a fork of DNTCaptcha.Core captcha generator and validator for ASP.NET Core applications with Russian language support.</Description>
         <VersionPrefix>1.6.6</VersionPrefix>
-        <Authors>Vahid Nasiri</Authors>
-        <TargetFrameworks>netstandard1.6;netstandard2.0</TargetFrameworks>
+        <Authors>Vahid Nasiri, Igor Pastukhov</Authors>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <AssemblyName>DNTCaptcha.Core</AssemblyName>
-        <PackageId>DNTCaptcha.Core</PackageId>
+        <AssemblyName>DNTCaptchaRus.Core</AssemblyName>
+        <PackageId>DNTCaptchaRus.Core</PackageId>
         <PackageTags>MVC;aspnetcore;captcha;.NET Core</PackageTags>
-        <PackageProjectUrl>https://github.com/VahidN/DNTCaptcha.Core</PackageProjectUrl>
+        <PackageProjectUrl></PackageProjectUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
         <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
         <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
         <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+        <Version>1.1.5</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <PlatformTarget>anycpu</PlatformTarget>
@@ -33,12 +35,14 @@
     </PropertyGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
         <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
-        <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.3" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.2" />
     </ItemGroup>
     <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
         <DefineConstants>NETSTANDARD2_0</DefineConstants>

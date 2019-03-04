@@ -1,34 +1,61 @@
 ﻿@using DNTCaptcha.TestWebApp.Models
 @model AccountViewModel
+<script type="text/javascript">
 
-<div asp-validation-summary="All" class="text-danger alert alert-block"></div>
+	var ajaxPost = function (query, dataUrl) {
+		return $.ajax({
+			url: dataUrl,
+			type: "POST",
+			contentType: "application/json; charset=utf-8",
+			data: query
+		});
+	}
+
+	function Registrate(e) {
+
+		var arr = {};
+        arr.Username = $('#Username').val();
+		arr.Password = $('#Password').val();
+        arr.DNTCaptchaText = $('#DNTCaptchaText').val();
+        arr.DNTCaptchaInputText = $('#DNTCaptchaInputText').val();
+        arr.DNTCaptchaToken = $('#DNTCaptchaToken').val();
+
+		var json = JSON.stringify(arr);
+
+		$.when(ajaxPost(json, "/Home/Login")).then(function (data) {
+			if (data == "") {
+                alert('OK');
+			}
+			else {
+                alert(data);
+			}
+		});
+
+    }
+</script>
 <div class="panel panel-default top30">
     <div class="panel-heading">
         <h3 class="panel-title">Login</h3>
     </div>
     <div class="panel-body form-horizontal">
         <div class="form-group">
-            <label asp-for="Username" class="col col-md-2 control-label"></label>
             <div class="controls col col-md-10">
                 <div class="input-group col-md-4">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-user"></span>
                     </span>
-                    <input asp-for="Username" class="form-control col-md-4" dir="ltr" AutoCompleteType="Disabled" />
+                    <input id="Username" class="form-control col-md-4" dir="ltr" AutoCompleteType="Disabled" />
                 </div>
-                <span asp-validation-for="Username" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Password" class="col col-md-2 control-label"></label>
             <div class="controls col col-md-10">
                 <div class="input-group col-md-4">
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-asterisk"></span>
                     </span>
-                    <input asp-for="Password" class="form-control col-md-4" dir="ltr" />
+                    <input id="Password" class="form-control col-md-4" dir="ltr" />
                 </div>
-                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -38,7 +65,7 @@
             <div class="controls col col-md-10">
                 <dnt-captcha asp-captcha-generator-max="9000"
                              asp-captcha-generator-min="1"
-                             asp-captcha-generator-language="English"
+                             asp-captcha-generator-language="Russian"
                              asp-placeholder="Security code as a number"
                              asp-validation-error-message="Please enter the security code as a number."
                              asp-font-name="Tahoma"
@@ -54,6 +81,7 @@
         </div>
     </div>
     <footer class="panel-footer">
-        <input type="submit" class="btn btn-info" value="Login" />
+        <input type="button" class="btn btn-info" value="Login" onclick= "Registrate()"/>
+        <input type="submit" class="btn btn-info" value="Login"/>
     </footer>
 </div>

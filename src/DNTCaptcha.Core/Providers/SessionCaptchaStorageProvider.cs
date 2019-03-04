@@ -65,7 +65,8 @@ namespace DNTCaptcha.Core.Providers
                 return null;
             }
 
-            Remove(context, token);
+            //Geter can't change anything
+            //Remove(context, token);
 
             var decryptedValue = _captchaProtectionProvider.Decrypt(value);
             return decryptedValue?.Replace(context.GetSalt(_captchaProtectionProvider), string.Empty);

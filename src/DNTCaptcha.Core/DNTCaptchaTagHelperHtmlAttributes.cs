@@ -92,5 +92,12 @@ namespace DNTCaptcha.Core
         /// </summary>
         [HtmlAttributeNotBound]
         public string CaptchaToken { set; get; }
+
+        /// <summary>
+        /// By default schema gets from request. Use it for https only
+        /// </summary>
+        [HtmlAttributeName("asp-use-only-https")]
+        public bool UseOnlyHttps { set; get; } = false;
+
     }
 }
