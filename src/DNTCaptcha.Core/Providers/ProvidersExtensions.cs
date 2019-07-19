@@ -16,7 +16,9 @@ namespace DNTCaptcha.Core.Providers
         /// </summary>
         public static string GetSalt(this HttpContext context, ICaptchaProtectionProvider captchaProtectionProvider)
         {
-            var ip = context.Connection.RemoteIpAddress;
+            //IP за балансировщиком передается в заголовке "X-Real-Ip"
+            string ip = context.Request.Headers["X-Real-Ip"];
+            if (ip == null) ip = context.Connection.RemoteIpAddress?.ToString();
             var userAgent = (string)context.Request.Headers[HeaderNames.UserAgent];
             var issueDate = DateTime.Now.ToString("yyyy_MM_dd", CultureInfo.InvariantCulture);
             var name = typeof(ProvidersExtensions).Name;

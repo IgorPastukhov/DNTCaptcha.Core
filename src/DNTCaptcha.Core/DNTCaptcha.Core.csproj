@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Description>DNTCaptchaRus.Core is a fork of DNTCaptcha.Core captcha generator and validator for ASP.NET Core applications with Russian language support.</Description>
+        <Description>DNTCaptchaRus.Core is a fork of DNTCaptcha.Core captcha generator and validator for ASP.NET Core applications with Russian language support.
+</Description>
         <VersionPrefix>1.6.6</VersionPrefix>
         <Authors>Vahid Nasiri, Igor Pastukhov</Authors>
         <TargetFrameworks>netstandard2.0</TargetFrameworks>
@@ -8,14 +9,17 @@
         <AssemblyName>DNTCaptchaRus.Core</AssemblyName>
         <PackageId>DNTCaptchaRus.Core</PackageId>
         <PackageTags>MVC;aspnetcore;captcha;.NET Core</PackageTags>
-        <PackageProjectUrl></PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/IgorPastukhov/DNTCaptcha.Core</PackageProjectUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
         <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
         <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
         <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-        <Version>1.1.5</Version>
+        <Version>1.1.6</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RepositoryUrl>https://github.com/IgorPastukhov/DNTCaptcha.Core</RepositoryUrl>
+        <RepositoryType>github</RepositoryType>
+        <PackageReleaseNotes>Added work with nginx-balancers</PackageReleaseNotes>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <PlatformTarget>anycpu</PlatformTarget>
