@@ -22,7 +22,8 @@ namespace DNTCaptcha.Core.Providers
             var userAgent = (string)context.Request.Headers[HeaderNames.UserAgent];
             var issueDate = DateTime.Now.ToString("yyyy_MM_dd", CultureInfo.InvariantCulture);
             var name = typeof(ProvidersExtensions).Name;
-            var salt = $"::{issueDate}::{name}::{ip}::{userAgent}";
+            //{ip} убрали из соли
+            var salt = $"::{issueDate}::{name}::{userAgent}";
             return captchaProtectionProvider.Hash(salt);
         }
     }
